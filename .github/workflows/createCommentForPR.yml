@@ -16,6 +16,8 @@ jobs:
         run: |
           PR_TITLE="${{ github.event.pull_request.title }}"
           TAG_LIST=$(echo $PR_TITLE | sed -n 's/.*RTImport-\(.*\)-RTChk.*/\1/p' | sed 's/, /,/g')
+          TAG_LIST=$(echo $TAG_LIST | tr ',' '\n' | sed 's/^ *//;s/ *$//' | tr '\n' ',')
+          TAG_LIST=${TAG_LIST%,}  # Remove trailing comma
           echo "TAG_LIST: [$TAG_LIST]"
           echo "::set-output name=tag_list::[$TAG_LIST]"
 
