@@ -25,8 +25,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python path/to/your/script.py "${{ github.event.pull_request.title }}" \
-                                         "${{ github.repository }}" \
-                                         "${{ github.event.pull_request.number }}" \
-                                         "https://api.github.com/repos/GTharunesh/RTGit-CommonChecklistRepo/contents" \
-                                         "${{ secrets.GITHUB_TOKEN }}"
+          python script/addChecklistToPR.py "${{ github.event.pull_request.title }}" \
+                                            "${{ github.repository }}" \
+                                            "${{ github.event.pull_request.number }}" \
+                                            "https://api.github.com/repos/GTharunesh/RTGit-CommonChecklistRepo/contents" \
+                                            "${{ secrets.GITHUB_TOKEN }}"
